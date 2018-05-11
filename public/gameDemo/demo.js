@@ -33,14 +33,7 @@ __phaser = {
             function preload() {
 
 
-                this.load.image('sky', '../../../gameDemo/assets/assets/sky.png');
-                this.load.image('ground', '../../../gameDemo/assets/assets/platform.png');
-                this.load.image('star', '../../../gameDemo/assets/assets/star.png');
-                this.load.image('bomb', '../../../gameDemo/assets/assets/bomb.png');
-                this.load.spritesheet('dude', 
-                '../../../gameDemo/assets/assets/dude.png',
-                    { frameWidth: 32, frameHeight: 48 }
-                );
+
 
                 // set canvas color
                 game.stage.backgroundColor = '#95a5a6';
@@ -48,6 +41,14 @@ __phaser = {
                 // load images/sounds/scripts
                 game.load.image('phaser_logo', '../../../gameDemo/phaser_logo.png')
 
+                this.load.image('sky', '../../../gameDemo/assets/sky.png');
+                this.load.image('ground', '../../../gameDemo/assets/platform.png');
+                this.load.image('star', '../../../gameDemo/assets/star.png');
+                this.load.image('bomb', '../../../gameDemo/assets/bomb.png');
+                this.load.spritesheet('dude', 
+                '../../../gameDemo/assets/dude.png',
+                    { frameWidth: 32, frameHeight: 48 }
+                );
                 // preloader events
                 game.load.onLoadStart.add(loadStart, this);
                 game.load.onFileComplete.add(fileComplete, this);
@@ -58,7 +59,7 @@ __phaser = {
 
             //-----------------------  CREATE
             function create() {
-                this.add.image(400, 300, 'sky');
+                this.add.image(0, 0, 'sky');
 
 
             }
