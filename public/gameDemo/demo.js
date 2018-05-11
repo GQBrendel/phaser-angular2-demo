@@ -39,8 +39,6 @@ __phaser = {
                 game.stage.backgroundColor = '#95a5a6';
 
                 // load images/sounds/scripts
-                game.load.image('phaser_logo', '../../../gameDemo/phaser_logo.png')
-
                 this.load.image('sky', '../../../gameDemo/assets/sky.png');
                 this.load.image('ground', '../../../gameDemo/assets/platform.png');
                 this.load.image('star', '../../../gameDemo/assets/star.png');
@@ -60,6 +58,7 @@ __phaser = {
             //-----------------------  CREATE
             function create() {
                 this.add.image(0, 0, 'sky');
+                this.add.image(400, 300, 'star');
 
 
             }
@@ -108,40 +107,14 @@ __phaser = {
             function startGame(){
                 gameState = "gameplay"
 
-                // define sprite
-                sprite = game.add.sprite(0, 0, 'phaser_logo');
-                sprite.width = 800;
-                sprite.height = 600;
 
-                // define fragment
-                var customUniforms = {
-                    iChannel0: { type: 'sampler2D', value: sprite.texture, textureData: { repeat: true } }
-                };
-                var fragmentSrc = [
-                    "precision mediump float;",
-                    "uniform float     time;",
-                    "uniform vec2      resolution;",
-                    "uniform sampler2D iChannel0;",
-                    "void main( void ) {",
-                        "vec2 uv = gl_FragCoord.xy / resolution.xy;",
-                        "uv.y *= -1.0;",
-                        "uv.y += (sin((uv.x + (time * 0.5)) * 10.0) * 0.1) + (sin((uv.x + (time * 0.2)) * 32.0) * 0.01);",
-                        "vec4 texColor = texture2D(iChannel0, uv);",
-                        "gl_FragColor = texColor;",
-                    "}"
-                ];
-                // apply filter to sprite
-                filter = new Phaser.Filter(game, customUniforms, fragmentSrc);
-                filter.setResolution(200, 150);
-                sprite.filters = [ filter ];
 
             }
             //-----------------------
 
             //-----------------------
             function gameplayUpdate(){
-                // update filter
-                filter.update();
+             
             }
             //-----------------------
 
