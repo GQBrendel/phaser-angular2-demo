@@ -9,19 +9,10 @@ __phaser = {
       //-------------------
       init(canvasEle, appComponent){
 
-            var config = 
-                {
-                    type: Phaser.AUTO,
-                    width: 800,
-                    height: 600,
-                    scene: {
-                        preload: preload,
-                        create: create,
-                        update: update
-                }
-            }
+  ;
               // create game object
-              var game = new Phaser.Game(800, 500, Phaser.AUTO, canvasEle, { preload: preload, create: create, update: update });
+              var game = new Phaser.Game(800, 600, Phaser.AUTO, canvasEle, { preload: preload, create: create, update: update });
+//              var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
               var gameState = "preload"
 
               // assign it
@@ -43,10 +34,12 @@ __phaser = {
                 this.load.image('ground', '../../../gameDemo/assets/platform.png');
                 this.load.image('star', '../../../gameDemo/assets/star.png');
                 this.load.image('bomb', '../../../gameDemo/assets/bomb.png');
-                this.load.spritesheet('dude', 
+                
+                this.load.spritesheet('dude', '../../../gameDemo/assets/dude.png', 32, 48);
+                /*this.load.spritesheet('dude', 
                 '../../../gameDemo/assets/dude.png',
                     { frameWidth: 32, frameHeight: 48 }
-                );
+                );*/
                 // preloader events
                 game.load.onLoadStart.add(loadStart, this);
                 game.load.onFileComplete.add(fileComplete, this);
@@ -55,10 +48,47 @@ __phaser = {
             }
             //-----------------------
 
+            var platforms;
             //-----------------------  CREATE
-            function create() {
-                this.add.image(0, 0, 'sky');
-                this.add.image(400, 300, 'star');
+            function create() 
+            {
+                game.physics.startSystem(Phaser.Physics.ARCADE);
+                //this.add.image(0, 0, 'sky');
+                            
+                //  A simple background for our game
+                game.add.sprite(0, 0, 'sky');
+
+                //  The platforms group contains the ground and the 2 ledges we can jump on
+                platforms = game.add.group();
+
+                //  We will enable physics for any object that is created in this group
+                platforms.enableBody = true;
+
+                // Here we create the ground.
+                var ground = platforms.create(0, game.world.height - 64, 'ground');
+
+                //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+                ground.scale.setTo(2, 2);
+
+                //  This stops it from falling away when you jump on it
+                ground.body.immovable = true;
+
+                //  Now let's create two ledges
+                var ledge = platforms.create(400, 400, 'ground');
+
+                ledge.body.immovable = true;
+
+                ledge = platforms.create(-150, 250, 'ground');
+
+                ledge.body.immovable = true;
+  
+            /*platforms = this.physics.add.staticGroup();
+
+                 platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+
+                 platforms.create(600, 400, 'ground');
+                 platforms.create(50, 250, 'ground');
+                 platforms.create(750, 220, 'ground');*/
 
 
             }
