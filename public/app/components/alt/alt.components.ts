@@ -9,7 +9,7 @@ declare var __phaser:any;
   ],
   template: `
     <center>
-      <h1>Angular2 - Phaser Demo</h1>
+      <h1>Angular2 - Phaser Game</h1>
       <phaser (phaser)="phaserLink1($event)" ></phaser>
     </center>
   `
