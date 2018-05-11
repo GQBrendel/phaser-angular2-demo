@@ -8,6 +8,18 @@ __phaser = {
 
       //-------------------
       init(canvasEle, appComponent){
+
+            var config = 
+                {
+                    type: Phaser.AUTO,
+                    width: 800,
+                    height: 600,
+                    scene: {
+                        preload: preload,
+                        create: create,
+                        update: update
+                }
+            }
               // create game object
               var game = new Phaser.Game(800, 500, Phaser.AUTO, canvasEle, { preload: preload, create: create, update: update });
               var gameState = "preload"
@@ -19,6 +31,16 @@ __phaser = {
 
             //-----------------------  PRELOAD
             function preload() {
+
+
+                this.load.image('sky', '../../../gameDemo/assets/assets/sky.png');
+                this.load.image('ground', '../../../gameDemo/assets/assets/platform.png');
+                this.load.image('star', '../../../gameDemo/assets/assets/star.png');
+                this.load.image('bomb', '../../../gameDemo/assets/assets/bomb.png');
+                this.load.spritesheet('dude', 
+                '../../../gameDemo/assets/assets/dude.png',
+                    { frameWidth: 32, frameHeight: 48 }
+                );
 
                 // set canvas color
                 game.stage.backgroundColor = '#95a5a6';
@@ -36,6 +58,7 @@ __phaser = {
 
             //-----------------------  CREATE
             function create() {
+                this.add.image(400, 300, 'sky');
 
 
             }
