@@ -30,7 +30,9 @@ __phaser = {
                 game.stage.backgroundColor = '#95a5a6';
 
                 // load images/sounds/scripts
-                this.load.image('sky', '../../../gameDemo/assets/sky.png');
+//                this.load.image('sky', '../../../gameDemo/assets/sky.png');
+
+                this.load.image('blackground', '../../../gameDemo/assets/blackground.png');
                 this.load.image('ground', '../../../gameDemo/assets/platform.png');
                 this.load.image('star', '../../../gameDemo/assets/star.png');
                 this.load.image('bomb', '../../../gameDemo/assets/bomb.png');
@@ -58,10 +60,9 @@ __phaser = {
             {
 
                 game.physics.startSystem(Phaser.Physics.ARCADE);
-                //this.add.image(0, 0, 'sky');
                             
                 //  A simple background for our game
-                game.add.sprite(0, 0, 'sky');
+                game.add.sprite(0, 0, 'blackground');
 
                 //  The platforms group contains the ground and the 2 ledges we can jump on
                 platforms = game.add.group();
