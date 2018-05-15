@@ -41,7 +41,7 @@ var HomeComponent = (function () {
             directives: [
                 ng2phaser_1.NG2_PHASER
             ],
-            template: "\n    <center>\n      <h1>Angular2 - Phaser Demo</h1>\n      <phaser (phaser)=\"phaserLink1($event)\" ></phaser>\n    </center>\n  "
+            template: "\n    <center>\n      <h1>Angular</h1>\n      <phaser (phaser)=\"phaserLink1($event)\" ></phaser>\n    </center>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], HomeComponent);

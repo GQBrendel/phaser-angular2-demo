@@ -2,7 +2,7 @@
 exports.home = function(req, res){
 
 	res.render('index', {
-		title: 'Angular2 - Phaser Demo',
+		title: 'Angular',
 		enviroment: req.device.enviroment,
 		isMobile: 	req.device.isMobile,
 		isIphone: 	req.device.isIphone,
