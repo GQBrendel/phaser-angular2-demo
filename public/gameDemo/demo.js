@@ -38,6 +38,7 @@ __phaser = {
                 this.load.image('bomb', '../../../gameDemo/assets/bomb.png');
                 
                 this.load.spritesheet('dude', '../../../gameDemo/assets/dude.png', 32, 48);
+                
                 /*this.load.spritesheet('dude', 
                 '../../../gameDemo/assets/dude.png',
                     { frameWidth: 32, frameHeight: 48 }
@@ -63,7 +64,7 @@ __phaser = {
                             
                 //  A simple background for our game
                 game.add.sprite(0, 0, 'blackground');
-
+             
                 //  The platforms group contains the ground and the 2 ledges we can jump on
                 platforms = game.add.group();
 
@@ -74,13 +75,14 @@ __phaser = {
                 var ground = platforms.create(0, game.world.height - 64, 'ground');
 
                 //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-                ground.scale.setTo(2, 2);
+                ground.scale.setTo(3.1, 2);
 
                 //  This stops it from falling away when you jump on it
                 ground.body.immovable = true;
 
                 //  Now let's create two ledges
-                var ledge = platforms.create(400, 400, 'ground');
+                var ledge = platforms.create(120, 630, 'ground');
+                ledge.scale.setTo(0.3,0.5);
 
                 ledge.body.immovable = true;
 
@@ -91,14 +93,16 @@ __phaser = {
                 /***Player Creation***/
                  // The player and its settings
                 player = game.add.sprite(32, game.world.height - 150, 'dude');
+                player.scale.setTo(0.8,0.8);
 
                  //  We need to enable physics on the player
                  game.physics.arcade.enable(player);
  
                  //  Player physics properties. Give the little guy a slight bounce.
                  player.body.bounce.y = 0.2;
-                 player.body.gravity.y = 300;
+                 player.body.gravity.y = 780;
                  player.body.collideWorldBounds = true;
+                 
  
                  //  Our two animations, walking left and right.
                  player.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -208,6 +212,7 @@ __phaser = {
                 
 
             }
+           
             //-----------------------
 
 
